@@ -24,6 +24,30 @@ export class UsuarioEntity {
   @Column({ name: 'senha', length: 255, nullable: false })
   senha: string;
 
+  @Column({ name: 'cpf', length: 11, nullable: false })
+  cpf: string;
+
+  @Column({ name: 'telefone', length: 10, nullable: false })
+  telefone: string;
+
+  @Column({ name: 'estado', length: 2, nullable: false })
+  estado: string;
+
+  @Column({ name: 'cidade', length: 50, nullable: false })
+  cidade: string;
+
+  @Column({ name: 'bairro', length: 50, nullable: false })
+  bairro: string;
+
+  @Column({ name: 'rua', length: 200, nullable: false })
+  rua: string;
+
+  @Column({ name: 'numero', length: 10, nullable: false })
+  numero: string;
+
+  @Column({ name: 'complemento', length: 100, nullable: false })
+  complemento: string;
+
   @CreateDateColumn({ name: 'created_at' })
   createdAt: string;
 
