@@ -34,7 +34,6 @@ export class AutenticacaoGuard implements CanActivate {
     return true;
   }
   private extrairTokenDoCabecalho(requisicao: Request): string | undefined {
-    //formato do cabeçalho authorizathon: "Bearer <valor_do_jwt>" -> protocolo HTTP
     const [tipo, token] = requisicao.headers.authorization?.split(' ') ?? [];
     return tipo === 'Bearer' ? token : undefined;
   }

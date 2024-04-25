@@ -64,7 +64,7 @@ export class UsuarioController {
     const usuarioRemovido = await this.usuarioService.deletaUsuario(id);
 
     return {
-      messagem: 'Usuário excluído com suceso',
+      messagem: 'Usuário excluído com sucesso',
       usuario: usuarioRemovido,
     };
   }

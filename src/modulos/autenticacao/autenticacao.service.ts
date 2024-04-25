@@ -24,7 +24,7 @@ export class AutenticacaoService {
     );
 
     if (!usuarioFoiAutenticado) {
-      throw new UnauthorizedException('O email ou a senha está incorreto.');
+      throw new UnauthorizedException('O email ou a senha inválido.');
     }
 
     const payload: UsuarioPayload = {
