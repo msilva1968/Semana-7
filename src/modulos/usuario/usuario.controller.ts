@@ -7,7 +7,7 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { HashearSenhaPipe } from '../../recursos/pipes/hashear-senha.pipe';
+import { CryptSenhaPipe } from '../../recursos/pipes/crypt-senha.pipe';
 import { AtualizaUsuarioDTO } from './dto/AtualizaUsuario.dto';
 import { CriaUsuarioDTO } from './dto/CriaUsuario.dto';
 import { ListaUsuarioDTO } from './dto/ListaUsuario.dto';
@@ -20,15 +20,15 @@ export class UsuarioController {
   @Post()
   async criaUsuario(
     @Body() { senha, ...dadosDoUsuario }: CriaUsuarioDTO,
-    @Body('senha', HashearSenhaPipe) senhaHasheada: string,
+    @Body('senha', CryptSenhaPipe) senhaCrypt: string,
   ) {
     const usuarioCriado = await this.usuarioService.criaUsuario({
       ...dadosDoUsuario,
-      senha: senhaHasheada,
+      senha: senhaCrypt,
     });
 
     return {
-      messagem: 'usuário criado com sucesso',
+      messagem: 'Usuário criado com sucesso',
       usuario: new ListaUsuarioDTO(usuarioCriado.id, usuarioCriado.nome),
     };
   }
@@ -38,7 +38,7 @@ export class UsuarioController {
     const usuariosSalvos = await this.usuarioService.listUsuarios();
 
     return {
-      mensagem: 'Usuários obtidos com sucesso.',
+      mensagem: 'Lista de usuários.',
       usuarios: usuariosSalvos,
     };
   }
@@ -54,7 +54,7 @@ export class UsuarioController {
     );
 
     return {
-      messagem: 'usuário atualizado com sucesso',
+      messagem: 'Usuário atualizado com sucesso',
       usuario: usuarioAtualizado,
     };
   }
@@ -64,7 +64,7 @@ export class UsuarioController {
     const usuarioRemovido = await this.usuarioService.deletaUsuario(id);
 
     return {
-      messagem: 'usuário removido com suceso',
+      messagem: 'Usuário excluído com suceso',
       usuario: usuarioRemovido,
     };
   }

@@ -16,7 +16,7 @@ export class AutenticacaoService {
   ) {}
 
   async login(email: string, senhaInserida: string) {
-    const usuario = await this.usuarioService.buscaPorEmail(email);
+    const usuario = await this.usuarioService.buscaEmail(email);
 
     const usuarioFoiAutenticado = await bcrypt.compare(
       senhaInserida,

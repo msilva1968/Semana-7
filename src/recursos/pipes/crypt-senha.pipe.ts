@@ -3,14 +3,14 @@ import { ConfigService } from '@nestjs/config';
 import * as bcrypt from 'bcrypt';
 
 @Injectable()
-export class HashearSenhaPipe implements PipeTransform {
+export class CryptSenhaPipe implements PipeTransform {
   constructor(private configService: ConfigService) {}
 
   async transform(senha: string) {
     const sal = this.configService.get<string>('SAL_SENHA');
 
-    const senhaHasheada = await bcrypt.hash(senha, sal!);
+    const senhaCrypt = await bcrypt.hash(senha, sal!);
 
-    return senhaHasheada;
+    return senhaCrypt;
   }
 }

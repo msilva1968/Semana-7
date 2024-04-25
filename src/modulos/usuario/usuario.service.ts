@@ -29,22 +29,22 @@ export class UsuarioService {
     return usuariosLista;
   }
 
-  async buscaPorEmail(email: string) {
-    const checkEmail = await this.usuarioRepository.findOne({
+  async buscaEmail(email: string) {
+    const validEmail = await this.usuarioRepository.findOne({
       where: { email },
     });
 
-    if (checkEmail === null)
-      throw new NotFoundException('O email não foi encontrado.');
+    if (validEmail === null)
+      throw new NotFoundException('e-Mail inexistente.');
 
-    return checkEmail;
+    return validEmail;
   }
 
   async atualizaUsuario(id: string, novosDados: AtualizaUsuarioDTO) {
     const usuario = await this.usuarioRepository.findOneBy({ id });
 
     if (usuario === null)
-      throw new NotFoundException('O usuário não foi encontrado.');
+      throw new NotFoundException('Usuário inexistente.');
 
     Object.assign(usuario, novosDados as UsuarioEntity);
 
@@ -55,7 +55,7 @@ export class UsuarioService {
     const usuario = await this.usuarioRepository.findOneBy({ id });
 
     if (!usuario) {
-      throw new NotFoundException('O usuário não foi encontrado');
+      throw new NotFoundException('Usuário inexistente.');
     }
 
     await this.usuarioRepository.delete(usuario.id);
