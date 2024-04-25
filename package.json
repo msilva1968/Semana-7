@@ -22,7 +22,7 @@
     "typeorm": "typeorm-ts-node-esm --dataSource src/db/data-source-cli.ts",
     "migration:show": "ts-node -O \"{ \\\"module\\\": \\\"commonjs\\\" }\" -r tsconfig-paths/register node_modules/typeorm/cli.js migration:show --dataSource src/db/data-source-cli.ts",
     "migration:generate": "ts-node -O \"{ \\\"module\\\": \\\"commonjs\\\" }\" -r tsconfig-paths/register node_modules/typeorm/cli.js migration:generate --dataSource src/db/data-source-cli.ts",
-    "migration:run": "ts-node -O \"{ \\\"module\\\": \\\"commonjs\\\" }\" -r tsconfig-paths/register node_modules/typeorm"  
+    "migration:run": "ts-node -O \"{ \\\"module\\\": \\\"commonjs\\\" }\" -r tsconfig-paths/register node_modules/typeorm"
   },
   "dependencies": {
     "@nestjs/cache-manager": "2.0.1",
